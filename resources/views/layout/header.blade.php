@@ -21,7 +21,6 @@
                         <li class="divider"></li>
                         <li><a href=""><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
-                        @endif
                     </ul>
                 </li>
             </ul>
@@ -70,10 +69,10 @@
                             <a href="javascript:void(0)"><i class="fa fa-users fa-fw"></i> Tài khoản<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">Danh sách</a>
+                                    <a href="user/list">Danh sách</a>
                                 </li>
                                 <li>
-                                    <a href="">Thêm</a>
+                                    <a href="user/add">Thêm</a>
                                 </li>
                             </ul>
                         </li>

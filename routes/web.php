@@ -14,17 +14,18 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/index',['as'=>'admin-index','uses'=>'Controller@getIndexAdmin']);
 Route::group(['prefix'=>'user'],function (){
 
-    Route::get('add','UserController@getAddUser');
+    Route::get('add','UserController@create');
 
-    Route::post('add','UserController@postAddUser');
+    Route::post('add','UserController@store');
 
-    Route::get('list','UserController@getListUser');
+    Route::get('list','UserController@index');
 
-    Route::get('update/{id}','UserController@getUpdateUser');
+    Route::get('update/{id}','UserController@edit');
 
-    Route::post('update/{id}','UserController@postUpdateUser');
+    Route::post('update/{id}','UserController@update');
 
-    Route::get('xoa/{id}','UserController@getDelUser');
+    Route::get('delete/{id}','UserController@destroy');
 });
