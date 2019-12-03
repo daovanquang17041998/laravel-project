@@ -15,6 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/index',['as'=>'admin-index','uses'=>'Controller@getIndexAdmin']);
+
+Route::group(['prefix'=>'category'],function(){
+
+    Route::get('add','CategoryController@create');
+
+    Route::post('add','CategoryController@store');
+
+    Route::get('update/{id}','CategoryController@edit');
+
+    Route::post('update/{id}','CategoryController@update');
+
+    Route::get('list','CategoryController@index');
+
+    Route::get('delete/{id}',"CategoryController@destroy");
+});
+
 Route::group(['prefix'=>'user'],function (){
 
     Route::get('add','UserController@create');

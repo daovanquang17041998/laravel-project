@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\User;
+use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class UserController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('user.list_user',compact('users'));
+        $cates = Category::all();
+        return view("category.list_cate",compact('cates'));
     }
 
     /**
@@ -26,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.add_user');
+        return view('category.add_cate');
     }
 
     /**
@@ -39,14 +41,18 @@ class UserController extends Controller
     {
         $id = DB::table('categories_product')->select('id');
         $request->validate([
-            'txtCateName' => 'required|max:15|unique:categories_product,name',
+            'txtCateName' => 'required|max:15|unique:categories,name',
+            'txtCateDescription' => 'required|max:255',
         ],[
             "txtCateName.required" => "Bạn chưa nhập category name",
             "txtCateName.unique" => "Tên loại đã tồn tại",
             "txtCateName.max" => "Tên loại không quá 15 kí tự",
+            "txtCateDescription.required" => "Bạn chưa nhập mô tả",
+            "txtCateDescription.max" => "Mô tả không quá 255 kí tự",
         ]);
-        $cate             = new Category();
+        $cate             = new Category;
         $cate->name       = $request->txtCateName;
+        $cate->description       = $request->txtCateDescription;
         $cate->created_at = new DateTime;
         $cate->save();
 
@@ -72,8 +78,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('user.edit_user',compact('user'));
+        $cate = Category::all()->toArray();
+        $item = Category::find($id);
+        return view("category.edit_cate",compact('cate','item'));
     }
 
     /**
@@ -85,24 +92,24 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'txtFullName' => 'required|max:250',
-            'txtEmail'     => "required|email|unique:users,email,".$id,
+
+        $request->validate([
+            'txtCateName' => 'required|max:15|unique:categories,name',
+            'txtCateDescription' => 'required|max:255',
         ],[
-            'txtFullName.required' => "Bạn chưa nhập tên",
-            'txtFullName.max'      => "Tên không quas 250 kí tự",
-            'txtEmail.required'     => "Bạn chưa nhập Email",
-            'txtEmail.email'        => "Bạn chưa nhập đúng định dạng Email",
-            "txtEmail.unique"       => "Email đã tồn tại",
+            "txtCateName.required" => "Bạn chưa nhập category name",
+            "txtCateName.unique" => "Tên loại đã tồn tại",
+            "txtCateName.max" => "Tên loại không quá 15 kí tự",
+            "txtCateDescription.required" => "Bạn chưa nhập mô tả",
+            "txtCateDescription.max" => "Mô tả không quá 255 kí tự",
         ]);
 
-        $user             = User::find($id);
-        $user->fullname = $request->txtFullName;
-        $user->email      = $request->txtEmail;
-        $user->level      = $request->rdoQuyen;
-        $user->save();
-
-        return redirect('user/update/'.$id)->with('message','Sửa thành công');
+        $cate             = Category::find($id);
+        $cate->name       = $request->txtCateName;
+        $cate->Description       = $request->txtCateDescription;
+        $cate->updated_at = new DateTime;
+        $cate->save();
+        return redirect('category/update/'.$id)->with("message","Sửa thành công");
     }
 
     /**
@@ -113,8 +120,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $user = User::find($id);
-        $user->delete();
-        return redirect('user/list')->with('message','Xóa thành công');
+        $cate = Category::find($id);
+        $cate->delete();
+        return redirect('category/list')->with('message','xóa thành công');
     }
 }

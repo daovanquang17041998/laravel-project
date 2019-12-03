@@ -36,10 +36,10 @@
                             <a href="javascript:void(0)"><i class="fa fa-cube fa-fw"></i> Danh mục<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="">Danh sách</a>
+                                    <a href="category/list">Danh sách</a>
                                 </li>
                                 <li>
-                                    <a href="">Thêm</a>
+                                    <a href="category/add">Thêm</a>
                                 </li>
                             </ul>
                         </li>
