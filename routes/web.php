@@ -14,3 +14,17 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['prefix'=>'user'],function (){
+
+    Route::get('add','UserController@getAddUser');
+
+    Route::post('add','UserController@postAddUser');
+
+    Route::get('list','UserController@getListUser');
+
+    Route::get('update/{id}','UserController@getUpdateUser');
+
+    Route::post('update/{id}','UserController@postUpdateUser');
+
+    Route::get('xoa/{id}','UserController@getDelUser');
+});
