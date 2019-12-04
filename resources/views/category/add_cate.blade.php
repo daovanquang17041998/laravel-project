@@ -12,7 +12,8 @@
                     <div class="col-lg-7" style="padding-bottom:120px">
                         @if(count($errors)>0)
                             <div class="alert alert-danger">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+                                </button>
                                 <strong>Warning!!</strong>
                                 @foreach($errors->all() as $err)
                                     {{$err}}<br>
@@ -21,7 +22,8 @@
                         @endif
                         @if(session('message'))
                             <div class="alert alert-success">
-                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;
+                                </button>
                                 <strong>Success</strong>
                                 {{session('message')}}
                             </div>
@@ -29,11 +31,13 @@
                         <form action="" method="POST">
                             <div class="form-group">
                                 <label>Tên danh mục</label>
-                                <input class="form-control" name="txtCateName" placeholder="Nhập tên danh mục" value="{!! old('txtCateName')!!}"/>
+                                <input class="form-control" name="txtCateName" placeholder="Nhập tên danh mục"
+                                       value="{!! old('txtCateName')!!}"/>
                             </div>
                             <div class="form-group">
                                 <label>Mô tả</label>
-                                <input class="form-control" name="txtCateDescription" placeholder="Nhập mô tả" value="{!! old('txtCateDescription')!!}"/>
+                                <input class="form-control" name="txtCateDescription" placeholder="Nhập mô tả"
+                                       value="{!! old('txtCateDescription')!!}"/>
                             </div>
                             <button type="submit" class="btn btn-default">Thêm</button>
                             <a href="category/list" class="btn btn-default">Trở về</a>

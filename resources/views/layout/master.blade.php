@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Trang admin</title>
-    <base href="{{asset('')}}" >
+    <base href="{{asset('')}}">
     <link href="admin_asset/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="admin_asset/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
     <link href="admin_asset/dist/css/sb-admin-2.css" rel="stylesheet">
@@ -27,31 +27,31 @@
 </head>
 
 <body>
-    <div id="wrapper">
-        @include('layout.header')
-        @yield('content')
-    </div>
+<div id="wrapper">
+    @include('layout.header')
+    @yield('content')
+</div>
 
-    <script src="admin_asset/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="admin_asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="admin_asset/bower_components/metisMenu/dist/metisMenu.min.js"></script>
-    <script src="admin_asset/dist/js/sb-admin-2.js"></script>
-    <script src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
-    <script src="admin_asset/ckeditor/ckeditor.js"></script>
-    <script src="admin_asset/js/myscript.js"></script>
-    <script type="text/javascript">
-       $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-    </script>
+<script src="admin_asset/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="admin_asset/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="admin_asset/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+<script src="admin_asset/dist/js/sb-admin-2.js"></script>
+<script src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+<script src="admin_asset/ckeditor/ckeditor.js"></script>
+<script src="admin_asset/js/myscript.js"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 
-    @yield('script')
-    <script>
-    $(document).ready(function() {
+@yield('script')
+<script>
+    $(document).ready(function () {
         $('#dataTables-example').DataTable();
     });
-    </script>
+</script>
 </body>
 </html>
