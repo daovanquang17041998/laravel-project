@@ -47,10 +47,10 @@
                     <a href="javascript:void(0)"><i class="fa fa-cube fa-fw"></i> Sản phẩm<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="">Danh sách</a>
+                            <a href="product/list">Danh sách</a>
                         </li>
                         <li>
-                            <a href="">Thêm</a>
+                            <a href="product/add">Thêm</a>
                         </li>
                     </ul>
                 </li>

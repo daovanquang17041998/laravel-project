@@ -45,3 +45,18 @@ Route::group(['prefix' => 'user'], function () {
 
     Route::get('delete/{id}', 'UserController@destroy');
 });
+
+Route::group(['prefix'=>'product'],function () {
+
+    Route::get("add",'ProductController@create');
+
+    Route::post("add",'ProductController@store');
+
+    Route::get("list",'ProductController@index');
+
+    Route::get("update/{id}","ProductController@edit");
+
+    Route::post("update/{id}","ProductController@update");
+
+    Route::get('delete/{id}',"ProductController@destroy");
+});
