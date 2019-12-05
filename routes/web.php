@@ -14,8 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/login-admin','LoginController@getAdminLogin');
+
+Route::post('/login-admin','LoginController@postAdminLogin');
+
 Route::get('/index', ['as' => 'admin-index', 'uses' => 'Controller@getIndexAdmin']);
 
+Route::group(['prefix'=>'admin','middleware'=>'AdminLogin'],function(){
+
+});
 Route::group(['prefix' => 'category'], function () {
 
     Route::get('add', 'CategoryController@create');

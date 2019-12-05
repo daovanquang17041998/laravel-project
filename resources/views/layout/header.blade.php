@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li class="divider"></li>
-                <li><a href=""><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="/login-admin"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
         </li>
@@ -30,7 +30,7 @@
                 <div class="space20">&nbsp;</div>
                 <br>
                 <li>
-                    <a href=""><i class="fa fa-dashboard fa-fw"></i> Trang tổng quan</a>
+                    <a href="/login"><i class="fa fa-dashboard fa-fw"></i> Trang tổng quan</a>
                 </li>
                 <li>
                     <a href="javascript:void(0)"><i class="fa fa-cube fa-fw"></i> Danh mục<span class="fa arrow"></span></a>
