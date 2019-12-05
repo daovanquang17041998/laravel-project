@@ -18,6 +18,8 @@ Route::get('/login-admin','LoginController@getAdminLogin');
 
 Route::post('/login-admin','LoginController@postAdminLogin');
 
+Route::get('/logout-admin','LogoutController@getAdminLogout');
+
 Route::get('/index', ['as' => 'admin-index', 'uses' => 'Controller@getIndexAdmin']);
 
 Route::group(['prefix'=>'admin','middleware'=>'AdminLogin'],function(){
