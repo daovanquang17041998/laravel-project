@@ -60,3 +60,31 @@ Route::group(['prefix'=>'product'],function () {
 
     Route::get('delete/{id}',"ProductController@destroy");
 });
+Route::group(['prefix'=>'bill'],function (){
+
+    Route::get("add",'BillController@create');
+
+    Route::post("add",'BillController@store');
+
+    Route::get('list','BillController@index');
+
+    Route::get("update/{id}","BillController@edit");
+
+    Route::post("update/{id}","BillController@update");
+
+    Route::get('delete/{id}','BillController@destroy');
+});
+Route::group(['prefix'=>'detailbill'],function (){
+
+    Route::get("add/{id}",'DetailBillController@create');
+
+    Route::post("add/{id}",'DetailBillController@store');
+
+    Route::get('list/{id}','DetailBillController@index');
+
+    Route::get("update/{id}","DetailBillController@edit");
+
+    Route::post("update/{id}","DetailBillController@update");
+
+    Route::get('delete/{id}','DetailBillController@destroy');
+});

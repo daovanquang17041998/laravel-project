@@ -55,14 +55,14 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="javascript:void(0)"><i class="fa fa-bar-chart-o fa-fw"></i> Nhập hàng<span
+                    <a href="javascript:void(0)"><i class="fa fa-bar-chart-o fa-fw"></i>Hóa Đơn<span
                             class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="">Danh sách</a>
+                            <a href="bill/list">Danh sách</a>
                         </li>
                         <li>
-                            <a href="">Thêm</a>
+                            <a href="bill/add">Thêm</a>
                         </li>
                     </ul>
                 </li>
