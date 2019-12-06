@@ -13,10 +13,10 @@ class AdminLoginMiddleware
         if(Auth::guard()->user()->level == 1){
             return $next($request);
         }else{
-            return redirect('login-admin');
+            return redirect()->route('login.create');
         }
     }else{
-        return redirect('login-admin');
+        return redirect()->route('login.create');
     }
     }
 }

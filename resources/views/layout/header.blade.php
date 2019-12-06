@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="">Quản lý</a>
+        <a class="navbar-brand" href="{{route('index')}}">Quản lý</a>
     </div>
     <ul class="nav navbar-top-links navbar-right">
         <li class="dropdown">
@@ -15,11 +15,11 @@
             </a>
             <ul class="dropdown-menu dropdown-user">
                 <li>
-                    <a href=""><i class="fa fa-user fa-fw"></i>
+                    <a href="{{route('index')}}"><i class="fa fa-user fa-fw"></i>
                     </a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="/logout-admin"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <li><a href="{{route('logout.create')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                 </li>
             </ul>
         </li>
@@ -30,16 +30,16 @@
                 <div class="space20">&nbsp;</div>
                 <br>
                 <li>
-                    <a href="/login"><i class="fa fa-dashboard fa-fw"></i> Trang tổng quan</a>
+                    <a href="{{route('index')}}"><i class="fa fa-dashboard fa-fw"></i> Trang tổng quan</a>
                 </li>
                 <li>
                     <a href="javascript:void(0)"><i class="fa fa-cube fa-fw"></i> Danh mục<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="category/list">Danh sách</a>
+                            <a href="{{route('admin.category.index')}}">Danh sách</a>
                         </li>
                         <li>
-                            <a href="category/add">Thêm</a>
+                            <a href="{{route('admin.category.create')}}">Thêm</a>
                         </li>
                     </ul>
                 </li>
@@ -47,10 +47,10 @@
                     <a href="javascript:void(0)"><i class="fa fa-cube fa-fw"></i> Sản phẩm<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="product/list">Danh sách</a>
+                            <a href="{{route('admin.product.index')}}">Danh sách</a>
                         </li>
                         <li>
-                            <a href="product/add">Thêm</a>
+                            <a href="{{route('admin.product.create')}}">Thêm</a>
                         </li>
                     </ul>
                 </li>
@@ -59,10 +59,10 @@
                             class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="bill/list">Danh sách</a>
+                            <a href="{{route('admin.bill.index')}}">Danh sách</a>
                         </li>
                         <li>
-                            <a href="bill/add">Thêm</a>
+                            <a href="{{route('admin.bill.create')}}">Thêm</a>
                         </li>
                     </ul>
                 </li>
@@ -71,10 +71,10 @@
                             class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="user/list">Danh sách</a>
+                            <a href="{{route('admin.user.index')}}">Danh sách</a>
                         </li>
                         <li>
-                            <a href="user/add">Thêm</a>
+                            <a href="{{route('admin.user.create')}}">Thêm</a>
                         </li>
                     </ul>
                 </li>

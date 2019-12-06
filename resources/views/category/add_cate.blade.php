@@ -40,7 +40,7 @@
                                        value="{!! old('txtCateDescription')!!}"/>
                             </div>
                             <button type="submit" class="btn btn-default">Thêm</button>
-                            <a href="category/list" class="btn btn-default">Trở về</a>
+                            <a href="{{route('admin.category.index')}}" class="btn btn-default">Trở về</a>
                             {{csrf_field()}}
                             <form>
                     </div>

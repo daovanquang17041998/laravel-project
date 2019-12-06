@@ -40,9 +40,9 @@
                         <td>{{$cate->id}}</td>
                         <td>{{$cate->name}}</td>
                         <td>{{$cate->description}}</td>
-                        <td class="center"><i class="fa fa-trash-o fa-fw "></i><a href="category/delete/{{$cate->id}}"
+                        <td class="center"><i class="fa fa-trash-o fa-fw "></i><a href="{{route('admin.category.destroy',['id'=>$cate->id])}}"
                                                                                   class='btn-del'>Xóa</a></td>
-                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="category/update/{{$cate->id}}">Sửa</a>
+                        <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.category.edit',['id'=>$cate->id])}}">Sửa</a>
                         </td>
                     </tr>
                     <?php $stt++;?>

@@ -52,8 +52,8 @@
                                 @if($item->price != null) {{number_format($item->price)}}<u>đ</u> @else Không xác định @endif
                             </td>
                             <td>{{$item->quantity}}</td>
-                            <td class="center"><i class="fa fa-pencil fa-fw "></i><a href="detailbill/update/{{$item->id}}">Sửa</a></td>
-                            <td class="center"><i class="fa fa-trash-o fa-fw "></i><a href="detailbill/delete/{{$item->id}}" class='btn-del'>Xóa</a></td>
+                            <td class="center"><i class="fa fa-pencil fa-fw "></i><a href="{{route('admin.bill.edit',['id'=>$item->id])}}">Sửa</a></td>
+                            <td class="center"><i class="fa fa-trash-o fa-fw "></i><a href="{{route('admin.bill.delete',['id'=>$item->id])}}" class='btn-del'>Xóa</a></td>
                         </tr>
                     @endforeach
                     </tbody>

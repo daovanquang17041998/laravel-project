@@ -14,86 +14,87 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login-admin','LoginController@getAdminLogin');
+Route::get('/login-admin','LoginController@create')->name('login.create');
 
-Route::post('/login-admin','LoginController@postAdminLogin');
+Route::post('/login-admin','LoginController@store')->name('login.store');
 
-Route::get('/logout-admin','LogoutController@getAdminLogout');
+Route::get('/logout-admin','LogoutController@create')->name('logout.create');
 
-Route::get('/index', ['as' => 'admin-index', 'uses' => 'Controller@getIndexAdmin']);
+Route::group(['prefix'=>'admin','middleware'=>'loginUser'],function(){
 
-Route::group(['prefix'=>'admin','middleware'=>'AdminLogin'],function(){
+    Route::get('/index','Controller@getIndexAdmin')->name('index');
 
-});
-Route::group(['prefix' => 'category'], function () {
+    Route::group(['prefix' => 'category'], function () {
 
-    Route::get('add', 'CategoryController@create');
+        Route::get('create', 'CategoryController@create')->name('admin.category.create');
 
-    Route::post('add', 'CategoryController@store');
+        Route::post('store', 'CategoryController@store')->name('admin.category.store');
 
-    Route::get('update/{id}', 'CategoryController@edit');
+        Route::get('index', 'CategoryController@index')->name('admin.category.index');
 
-    Route::post('update/{id}', 'CategoryController@update');
+        Route::get('edit/{id}', 'CategoryController@edit')->name('admin.category.edit');
 
-    Route::get('list', 'CategoryController@index');
+        Route::post('update/{id}', 'CategoryController@update')->name('admin.category.update');
 
-    Route::get('delete/{id}', "CategoryController@destroy");
-});
+        Route::get('destroy/{id}', "CategoryController@destroy")->name('admin.category.destroy');
+    });
 
-Route::group(['prefix' => 'user'], function () {
+    Route::group(['prefix' => 'user'], function () {
 
-    Route::get('add', 'UserController@create');
+        Route::get('create', 'UserController@create')->name('admin.user.create');
 
-    Route::post('add', 'UserController@store');
+        Route::post('store', 'UserController@store')->name('admin.user.store');
 
-    Route::get('list', 'UserController@index');
+        Route::get('index', 'UserController@index')->name('admin.user.index');
 
-    Route::get('update/{id}', 'UserController@edit');
+        Route::get('edit/{id}', 'UserController@edit')->name('admin.user.edit');
 
-    Route::post('update/{id}', 'UserController@update');
+        Route::post('update/{id}', 'UserController@update')->name('admin.user.update');
 
-    Route::get('delete/{id}', 'UserController@destroy');
-});
+        Route::get('destroy/{id}', 'UserController@destroy')->name('admin.user.destroy');
+    });
 
-Route::group(['prefix'=>'product'],function () {
+    Route::group(['prefix'=>'product'],function () {
 
-    Route::get("add",'ProductController@create');
+        Route::get("create",'ProductController@create')->name('admin.product.create');
 
-    Route::post("add",'ProductController@store');
+        Route::post("store",'ProductController@store')->name('admin.product.store');
 
-    Route::get("list",'ProductController@index');
+        Route::get("index",'ProductController@index')->name('admin.product.index');
 
-    Route::get("update/{id}","ProductController@edit");
+        Route::get("edit/{id}","ProductController@edit")->name('admin.product.edit');
 
-    Route::post("update/{id}","ProductController@update");
+        Route::post("update/{id}","ProductController@update")->name('admin.product.update');
 
-    Route::get('delete/{id}',"ProductController@destroy");
-});
-Route::group(['prefix'=>'bill'],function (){
+        Route::get('destroy/{id}',"ProductController@destroy")->name('admin.product.destroy');
+    });
+    Route::group(['prefix'=>'bill'],function (){
 
-    Route::get("add",'BillController@create');
+        Route::get("create",'BillController@create')->name('admin.bill.create');
 
-    Route::post("add",'BillController@store');
+        Route::post("store",'BillController@store')->name('admin.bill.store');
 
-    Route::get('list','BillController@index');
+        Route::get('index','BillController@index')->name('admin.bill.index');
 
-    Route::get("update/{id}","BillController@edit");
+        Route::get("edit/{id}","BillController@edit")->name('admin.bill.edit');
 
-    Route::post("update/{id}","BillController@update");
+        Route::post("update/{id}","BillController@update")->name('admin.bill.update');
 
-    Route::get('delete/{id}','BillController@destroy');
-});
-Route::group(['prefix'=>'detailbill'],function (){
+        Route::get('destroy/{id}','BillController@destroy')->name('admin.bill.destroy');
+    });
+    Route::group(['prefix'=>'detailbill'],function (){
 
-    Route::get("add/{id}",'DetailBillController@create');
+        Route::get("create/{id}",'DetailBillController@create')->name('admin.detailbill.create');
 
-    Route::post("add/{id}",'DetailBillController@store');
+        Route::post("store/{id}",'DetailBillController@store')->name('admin.detailbill.store');
 
-    Route::get('list/{id}','DetailBillController@index');
+        Route::get('index/{id}','DetailBillController@index')->name('admin.detailbill.index');
 
-    Route::get("update/{id}","DetailBillController@edit");
+        Route::get("edit/{id}","DetailBillController@edit")->name('admin.detailbill.edit');
 
-    Route::post("update/{id}","DetailBillController@update");
+        Route::post("update/{id}","DetailBillController@update")->name('admin.detailbill.update');
 
-    Route::get('delete/{id}','DetailBillController@destroy');
+        Route::get('destroy/{id}','DetailBillController@destroy')->name('admin.detailbill.destroy');
+    });
+
 });

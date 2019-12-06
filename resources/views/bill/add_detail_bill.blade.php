@@ -44,7 +44,7 @@
                             </div>
 
                             <button type="submit" class="btn btn-default">Thêm</button>
-                        <a href="detailbill/list/{{$detailbill->id}}" class="btn btn-default">Trở về</a>
+                        <a href="{{route('admin.detailbill.index',['id'=>$detailbill->id])}}" class="btn btn-default">Trở về</a>
                         </div>
                     {{csrf_field()}}
                     </form>

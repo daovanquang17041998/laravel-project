@@ -44,7 +44,7 @@
                         </label>
                     </div>
                     <button type="submit" class="btn btn-default" name='ok'>Lưu lại</button>
-                    <a href="bill/list" class="btn btn-default">Trở về</a>
+                    <a href="{{route('admin.bill.index')}}" class="btn btn-default">Trở về</a>
                 </div>
                  {{csrf_field()}}
                 <form>

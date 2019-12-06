@@ -47,8 +47,8 @@
                                        Người dùng
                                     @endif
                                 </td>
-                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a class='btn-del' href="user/delete/{{$user->id}}"> Xóa</a></td>
-                                <td class="" ass="center"><i class="fa fa-pencil fa-fw"></i> <a href="user/update/{{$user->id}}">Sửa</a></td>
+                                <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a class='btn-del' href="{{route('admin.user.destroy',['id'=>$user->id])}}"> Xóa</a></td>
+                                <td class="" ass="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.user.edit',['id'=>$user->id])}}">Sửa</a></td>
                             </tr>
                             @endforeach
                         </tbody>

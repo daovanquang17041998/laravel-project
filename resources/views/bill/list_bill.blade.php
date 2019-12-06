@@ -59,10 +59,10 @@
                                 <td>
                                    {{number_format($bill->totalmoney)}}<u>đ</u>
                                 </td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="detailbill/add/{{$bill->id}}">Thêm</a></td>
-                                <td class="center"><i class="fa fa-trash-o fa-fw "></i><a href="bill/delete/{{$bill->id}}" class='btn-del'> Xoá</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="bill/update/{{$bill->id}}">Sửa</a></td>
-                                <td class="center"><i class="fa fa-search fa-fw"></i> <a href="detailbill/list/{{$bill->id}}">Chi Tiết</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.bill.create',['id'=>$bill->id])}}">Thêm</a></td>
+                                <td class="center"><i class="fa fa-trash-o fa-fw "></i><a href="{{route('admin.bill.destroy',['id'=>$bill->id])}}" class='btn-del'> Xoá</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.bill.edit',['id'=>$bill->id])}}">Sửa</a></td>
+                                <td class="center"><i class="fa fa-search fa-fw"></i> <a href="{{route('admin.bill.index',['id'=>$bill->id])}}">Chi Tiết</a></td>
                             </tr>
 
                             @endforeach

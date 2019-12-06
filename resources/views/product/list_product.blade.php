@@ -49,8 +49,8 @@
                                 <td>{{$product->promotion_price}}</td>
                                 <td>{{$product->quantity}}</td>
                                 <td> @if($product->status==1) Còn hàng @else Hết hàng @endif</td>
-                                <td class="center"  ><i class="fa fa-trash-o fa-fw"></i> <a href="product/delete/{{$product->id}})"  class='btn-del' >Xóa</a></td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="product/update/{{$product->id}}">Sửa</a></td>
+                                <td class="center"  ><i class="fa fa-trash-o fa-fw"></i> <a href="{{route('admin.product.destroy',['id'=>$product->id])}}"  class='btn-del' >Xóa</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.product.edit',['id'=>$product->id])}}">Sửa</a></td>
                             </tr>
                             @endforeach
                         </tbody>

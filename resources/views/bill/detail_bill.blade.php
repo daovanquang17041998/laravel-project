@@ -53,7 +53,7 @@
                                 <td>
                                     @if($item->price != null) {{$item->price}} vnđ @else Không xác định @endif
                                 </td>
-                                <td class="center"><i class="fa fa-trash-o fa-fw "></i><a href="admin/don-hang/chi-tiet/xoa/{{$item->id}}" class='btn-del'> Delete</a></td>
+                                <td class="center"><i class="fa fa-trash-o fa-fw "></i><a href="{{route('admin.detailbill.destroy',['id'=>$item->id])}}" class='btn-del'> Delete</a></td>
                             </tr>
                             @endforeach
                     </tbody>

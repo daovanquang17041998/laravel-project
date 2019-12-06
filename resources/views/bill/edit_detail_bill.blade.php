@@ -37,7 +37,7 @@
                         <input class="form-control" name="txtQuantity" placeholder="Nhập số lượng" value="{{$bill_detail->quantity}}"/>
                     </div>
                     <button type="submit" class="btn btn-default" name='ok'>Lưu lại</button>
-                    <a href="bill/list" class="btn btn-default">Trở về</a>
+                    <a href="{{route('admin.bill.index')}}}" class="btn btn-default">Trở về</a>
                 </div>
                 <div class="col-lg-5" >
                  {{csrf_field()}}
