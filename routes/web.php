@@ -14,13 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/login-admin','LoginController@create')->name('login.create');
-
-Route::post('/login-admin','LoginController@store')->name('login.store');
-
-Route::get('/logout-admin','LogoutController@create')->name('logout.create');
-
-Route::group(['prefix'=>'admin','middleware'=>'loginUser'],function(){
+//,'middleware'=>'loginUser'
+Route::group(['prefix'=>'admin'],function(){
 
     Route::get('/index','Controller@getIndexAdmin')->name('index');
 
@@ -98,3 +93,7 @@ Route::group(['prefix'=>'admin','middleware'=>'loginUser'],function(){
     });
 
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

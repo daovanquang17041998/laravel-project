@@ -36,7 +36,7 @@
 
                              <div class="form-group">
                                 <label>Tên</label>
-                                <input class="form-control" name="name" placeholder="Điền vào họ tên User" value="{!! $user->fullname !!}"/>
+                                <input class="form-control" name="name" placeholder="Điền vào họ tên User" value="{!! $user->name !!}"/>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>

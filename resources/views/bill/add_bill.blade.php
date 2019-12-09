@@ -31,7 +31,7 @@
                             <select class="form-control" name="user_id">
                                 @foreach($users as $user)
                                     @if($user->level>=1)
-                                        <option value='{{$user->id}}'>  {{$user->fullname}} </option>
+                                        <option value='{{$user->id}}'> {{$user->name}} </option>
                                     @endif
                                 @endforeach
                             </select>

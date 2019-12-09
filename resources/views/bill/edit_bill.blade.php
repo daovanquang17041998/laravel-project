@@ -29,7 +29,7 @@
                                 <select class="form-control" name="user_id">
                                     @foreach($users as $user)
                                         @if($user->level==1)
-                                        <option value='{{$user->id}}' @if($user->id == $bill->id_user) selected @endif >{{$user->fullname}}</option>
+                                        <option value='{{$user->id}}' @if($user->id == $bill->id_user) selected @endif >{{$user->name}}</option>
                                         @endif
                                     @endforeach
                                 </select>
@@ -40,7 +40,7 @@
                             <input name="payment" value="1" {{$bill->payment == 1 ? 'checked': ''}} type="radio">Trực tiếp
                         </label>
                         <label class="radio-inline">
-                            <input name="payment" value="0" {{$bill->payment == 0 ? 'checked': ''}}type="radio">Chuyển khoản
+                            <input name="payment" value="0" {{$bill->payment == 0 ? 'checked': ''}} type="radio">Chuyển khoản
                         </label>
                     </div>
                     <button type="submit" class="btn btn-default" name='ok'>Lưu lại</button>

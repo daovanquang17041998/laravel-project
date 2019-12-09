@@ -38,7 +38,7 @@
                             @foreach($users as $user)
                             <tr class="odd gradeX" align="center">
                                 <td>{{$user->id}}</td>
-                                <td>{{$user->fullname}}</td>
+                                <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>
                                     @if($user->level == 1)

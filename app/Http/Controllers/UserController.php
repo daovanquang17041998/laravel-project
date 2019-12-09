@@ -44,6 +44,7 @@ class UserController extends Controller
             $get_name_image = $get_image->getClientOriginalName();
             $get_image->move('uploads/users',$get_name_image);
             $data['avatar'] = $get_name_image;
+            User::create($request->all());
             return redirect()->route('admin.user.create')->with('message','Thêm thành công');
         }
         else
@@ -83,24 +84,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request,[
-            'txtFullName' => 'required|max:250',
-            'txtEmail'     => "required|email|unique:users,email,".$id,
-        ],[
-            'txtFullName.required' => "Bạn chưa nhập tên",
-            'txtFullName.max'      => "Tên không quas 250 kí tự",
-            'txtEmail.required'     => "Bạn chưa nhập Email",
-            'txtEmail.email'        => "Bạn chưa nhập đúng định dạng Email",
-            "txtEmail.unique"       => "Email đã tồn tại",
-        ]);
 
-        $user             = User::find($id);
-        $user->fullname = $request->txtFullName;
-        $user->email      = $request->txtEmail;
-        $user->level      = $request->rdoQuyen;
-        $user->save();
+        $user = new User();
+        $result = $user->updateUser($id,$request->all());
+        if($result)
+        {
+            return redirect()->route('admin.user.edit',['id'=>$id])->with('message','Sửa thành công');
 
-        return redirect()->route('admin.user.edit',['id'=>$id])->with('message','Sửa thành công');
+        }
+        else{
+            return 'sai';
+        }
+
     }
 
     /**
@@ -113,6 +108,6 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user->delete();
-        return redirect('user/list')->with('message','Xóa thành công');
+        return redirect()->route('admin.user.index')->with('message','Xóa thành công');
     }
 }

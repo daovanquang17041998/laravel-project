@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreAddLoginPost;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -35,5 +37,27 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    public function showLoginForm()
+    {
+        return view('login');
+    }
+    public function login(StoreAddLoginPost $request)
+    {
+        $email = $request->txtEmail;
+        $password = $request->txtPass;
+        if (Auth::attempt(['email' => $email, 'password' => $password,'level'=>1])) {
+            return redirect()->route('index');
+        }else{
+            return redirect()->route('login.create')->with('loi','Sai Email hoặc mật khẩu hoặc bạn không có quyền đăng nhập vào trang này');
+        }
+    }
+    public function logout()
+    {
+        if(Auth::guard()->check())
+        {
+            Auth::guard()->logout();
+            return redirect('/login-admin');
+        }
     }
 }

@@ -36,7 +36,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function updateUser($id,$data)
+    {
+        $user = User::findOrFail($id);
+        if($user)
+        {
+            return $user->update($data);
+        }
 
+    }
     public function bill()
     {
         return $this->hasMany('App\Bill','id_user','id');

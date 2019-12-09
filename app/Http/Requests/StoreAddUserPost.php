@@ -28,7 +28,7 @@ class StoreAddUserPost extends FormRequest
             'name' => 'required|max:250',
             'address' => 'required|max:250',
             'password' => 'required|max:12|min:6',
-            'repassword'=>'required|same:txtPass|min:6|max:12',
+            'repassword'=>'required|min:6|max:12',
             'phone' => 'required|numeric',
             'birthday' => 'required',
         ];
@@ -45,7 +45,6 @@ class StoreAddUserPost extends FormRequest
             "password.min"    => "Mật khẩu ít nhất 6 kí tự",
             "password.max"    => "Mật khẩu không quá 12 kí tự",
             "repassword.required"    => "Bạn phải nhập lại mật khẩu",
-            "repassword.same"    => "Mật khẩu không khớp nhau",
             "repassword.min"    => "Nhập lại mật khẩu ít nhất 6 kí tự",
             "repassword.max"    => "Nhập lại mật khẩu không quá 12 kí tự",
             "phone.required"    => "Bạn phải nhập số điện thoại",

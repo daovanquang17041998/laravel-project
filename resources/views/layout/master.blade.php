@@ -14,7 +14,7 @@
     <link href="admin_asset/dist/css/sb-admin-2.css" rel="stylesheet">
     <link href="admin_asset/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="http://cdn.datatables.net/1.10.4/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/adminstyle.css">
+    <link rel="stylesheet" type="text/css" href="login/css/adminstyle.css">
     <link rel="stylesheet" type="text/css" href="admin_asset/css/mycss.css">
     <script src="admin_asset/ckeditor/ckeditor.js" type="text/javascript"></script>
     <link href="source/assets/dest/css/bootstrap.min.css" rel="stylesheet">

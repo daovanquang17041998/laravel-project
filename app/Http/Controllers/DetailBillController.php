@@ -20,9 +20,9 @@ class DetailBillController extends Controller
      */
     public function index($id)
     {
-        $product_items = DetailBill::where('id_bill',$id)->get();
-        $bill = Bill::find($id);
-        $user = User::find($bill->id_user);
+        $product_items = DetailBill::where('bill_id',$id)->get();
+        $bill = Bill::findOrFail($id);
+        $user = User::findOrFail($bill->id_user);
         return view('bill.list_detail_bill',compact('bill','product_items','user'));
     }
 

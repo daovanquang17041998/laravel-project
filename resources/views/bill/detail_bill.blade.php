@@ -12,7 +12,7 @@
                         <table class="table__info-customer">
                             <tr>
                                 <td class='td-left'>Họ và tên:</td>
-                                <td>{{$customer->fullname}}</td>
+                                <td>{{$customer->name}}</td>
                             </tr>
                             <tr>
                                 <td>Số điện thoại:</td>

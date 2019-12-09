@@ -43,7 +43,7 @@
                             <tr class="odd gradeX" align="center">
                                 <td>{{$product->id}}</td>
                                 <td>{{$product->name}}</td>
-                                <td>{{$product->category->name}}</td>
+                                <td>{{$product->name}}</td>
                                 <td>{{$product->description}}</td>
                                 <td>{{$product->unit_price}}</td>
                                 <td>{{$product->promotion_price}}</td>

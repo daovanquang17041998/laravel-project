@@ -10,7 +10,16 @@ class Bill extends Model
 
     protected $fillable = ['user_id', 'total_price', 'payment'];
 
-    public function detailBill()
+    public function updateBill($id,$data)
+    {
+        $bill = Bill::findOrFail($id);
+        if($bill)
+        {
+            return $bill->update($data);
+        }
+
+    }
+    public function detailbill()
     {
         return $this->belongsTo('App\DetailBill','bill_id','id');
     }

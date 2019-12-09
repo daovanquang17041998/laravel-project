@@ -8,7 +8,7 @@
                             <small>Thêm</small>
                         </h1>
                     </div>
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('admin.detailbill.store',['id'=>$detailbill->id])}}" method="POST" enctype="multipart/form-data">
                         <div class="col-lg-7" style="padding-bottom:120px">
                     @if(count($errors)>0)
                         <div class="alert alert-warning" role="alert">

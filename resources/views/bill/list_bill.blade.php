@@ -42,7 +42,7 @@
                             @foreach($bills as $bill)
                             <tr class="odd gradeX" align="center">
                                 <td>{{$bill->id}}</td>
-                                <td>{{$bill->user->fullname}}</td>
+                                <td>{{$bill->user->name}}</td>
                                 <td>
                                     <?php Carbon\Carbon::setLocale('vi') ; //dùng để đinh nghĩa time
                                     if(Carbon\Carbon::createFromTimestamp(strtotime($bill->created_at))->diffInHours() >= 24)
@@ -59,10 +59,10 @@
                                 <td>
                                    {{number_format($bill->totalmoney)}}<u>đ</u>
                                 </td>
-                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.bill.create',['id'=>$bill->id])}}">Thêm</a></td>
+                                <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.detailbill.create',['id'=>$bill->id])}}">Thêm</a></td>
                                 <td class="center"><i class="fa fa-trash-o fa-fw "></i><a href="{{route('admin.bill.destroy',['id'=>$bill->id])}}" class='btn-del'> Xoá</a></td>
                                 <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{{route('admin.bill.edit',['id'=>$bill->id])}}">Sửa</a></td>
-                                <td class="center"><i class="fa fa-search fa-fw"></i> <a href="{{route('admin.bill.index',['id'=>$bill->id])}}">Chi Tiết</a></td>
+                                <td class="center"><i class="fa fa-search fa-fw"></i> <a href="{{route('admin.detailbill.index',['id'=>$bill->id])}}">Chi Tiết</a></td>
                             </tr>
 
                             @endforeach

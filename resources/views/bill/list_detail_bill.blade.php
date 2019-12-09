@@ -12,7 +12,7 @@
                     <table class="table__info-customer">
                         <tr>
                             <td class='td-left'>Nhân viên:</td>
-                            <td>{{$user->fullname}}</td>
+                            <td>{{$user->name}}</td>
                         </tr>
                         <tr>
                             <td>Phương thức thanh toán:</td>
@@ -53,7 +53,7 @@
                             </td>
                             <td>{{$item->quantity}}</td>
                             <td class="center"><i class="fa fa-pencil fa-fw "></i><a href="{{route('admin.bill.edit',['id'=>$item->id])}}">Sửa</a></td>
-                            <td class="center"><i class="fa fa-trash-o fa-fw "></i><a href="{{route('admin.bill.delete',['id'=>$item->id])}}" class='btn-del'>Xóa</a></td>
+                            <td class="center"><i class="fa fa-trash-o fa-fw "></i><a href="{{route('admin.bill.destroy',['id'=>$item->id])}}" class='btn-del'>Xóa</a></td>
                         </tr>
                     @endforeach
                     </tbody>

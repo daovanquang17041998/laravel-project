@@ -14,11 +14,6 @@ class BillController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    protected $bill;
-    function __construct(Bill $bill)
-    {
-
-    }
 
     public function index()
     {
@@ -82,12 +77,17 @@ class BillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $bill = Bill::find($id);
-        $bill->id_user     = $request->selectUserId;
-        $bill->total_price    = $bill->total_price;
-        $bill->payment         = $request->txtPayment;
-        $bill->save();
-        return redirect()->route('admin.bill.edit',['id'=>$id])->with('message','Sửa hóa đơn thành công');
+
+        $bill = new Bill();
+        $result = $bill->updateBill($id,$request->all());
+        if($result)
+        {
+            return redirect()->route('admin.bill.edit',['id'=>$id])->with('message','Sửa hóa đơn thành công');
+
+        }
+        else{
+            return 'sai';
+        }
     }
 
     /**

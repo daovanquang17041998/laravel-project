@@ -21,10 +21,21 @@ class StoreUpdateUserPost extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules($id)
     {
         return [
-            //
+            'txtFullName' => 'required|max:250',
+            'txtEmail'     => "required|email|unique:users,email,".$id,
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'txtFullName.required' => "Bạn chưa nhập tên",
+            'txtFullName.max'      => "Tên không quas 250 kí tự",
+            'txtEmail.required'     => "Bạn chưa nhập Email",
+            'txtEmail.email'        => "Bạn chưa nhập đúng định dạng Email",
+            "txtEmail.unique"       => "Email đã tồn tại",
         ];
     }
 }
