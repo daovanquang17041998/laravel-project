@@ -32,23 +32,23 @@
                                 {{session('error')}}
                             </div>
                         @endif
-                        <form action="" method="POST">
+                        <form action="{{route('admin.user.update',['id'=>$user->id])}}" method="POST">
 
                              <div class="form-group">
                                 <label>Tên</label>
-                                <input class="form-control" name="txtFullName" placeholder="Điền vào họ tên User" value="{!! $user->fullname !!}"/>
+                                <input class="form-control" name="name" placeholder="Điền vào họ tên User" value="{!! $user->fullname !!}"/>
                             </div>
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type='email' class="form-control" name="txtEmail" placeholder="Nhập vào Email" value='{{ $user->email }}' />
+                                <input type='email' class="form-control" name="email" placeholder="Nhập vào Email" value='{{ $user->email }}' />
                             </div>
                              <div class="form-group">
                                 <label style="margin-right: 20px">Quyền hạn</label>
                                 <label class="radio-inline">
-                                    <input name="rdoQuyen" value="0" type="radio"  @if($user->level==0) checked @endif>Người dùng
+                                    <input name="level" value="0" type="radio"  @if($user->level==0) checked @endif>Người dùng
                                 </label>
                                 <label class="radio-inline">
-                                    <input name="rdoQuyen" value="1"  type="radio"@if($user->level==1) checked @endif>Admin
+                                    <input name="level" value="1"  type="radio"@if($user->level==1) checked @endif>Admin
                                 </label>
                             </div>
                             <button type="submit" class="btn btn-default">Lưu lại</button>

@@ -14,6 +14,12 @@ class BillController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    protected $bill;
+    function __construct(Bill $bill)
+    {
+
+    }
+
     public function index()
     {
         $bills = Bill::orderBy('id','DESC')->get();
@@ -39,12 +45,8 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
-        $bill_import= new Bill();
-        $bill_import->id_user = $request->selectUserId;
-        $bill_import->total_price = 0;
-        $bill_import->payment = $request->txtPayment;
-        $bill_import->save();
-        return redirect("bill/add")->with("message","Thêm hóa đơn thành công");
+         Bill::create($request->all());
+        return redirect()->route('admin.bill.create')->with("message","Thêm hóa đơn thành công");
     }
 
     /**
@@ -80,12 +82,12 @@ class BillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $bill_import = Bill::find($id);
-        $bill_import->id_user     = $request->selectUserId;
-        $bill_import->total_price    = $bill_import->totalmoney;
-        $bill_import->payment         = $request->txtPayment;
-        $bill_import->save();
-        reedirect("bill/update".$id)->with('message','Sửa hóa đơn thành công');
+        $bill = Bill::find($id);
+        $bill->id_user     = $request->selectUserId;
+        $bill->total_price    = $bill->total_price;
+        $bill->payment         = $request->txtPayment;
+        $bill->save();
+        return redirect()->route('admin.bill.edit',['id'=>$id])->with('message','Sửa hóa đơn thành công');
     }
 
     /**
@@ -99,11 +101,11 @@ class BillController extends Controller
         $detail_bill = DetailBill::all();
         foreach ($detail_bill as $detail_bills):
             if($detail_bills->id_bill==$id){
-                return redirect('bill/list')->with('error','Bạn phải xóa chi tiết hóa đơn nhập trước khi xóa hóa đơn này');
+                return redirect()->route('admin.bill.index')->with('error','Bạn phải xóa chi tiết hóa đơn nhập trước khi xóa hóa đơn này');
             }
         endforeach;
         $bill = Bill::find($id);
         $bill->delete();
-        return redirect('bill/list')->with('message','Xóa hóa đơn thành công');
+        return redirect()->route('admin.bill.index')->with('message','Xóa hóa đơn thành công');
     }
 }

@@ -32,18 +32,18 @@
                                 {{session('loi')}}
                             </div>
                         @endif
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{route('admin.user.store')}}" method="POST" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Họ tên*</label>
-                                <input class="form-control" name="txtFullName" placeholder="Điền vào họ và tên User" value="{!! old('txtFullName') !!}"/>
+                                <input class="form-control" name="name" placeholder="Điền vào họ và tên User" value="{!! old('name') !!}"/>
                             </div>
                             <div class="form-group">
                                 <label>Email*</label>
-                                <input type='email' class="form-control" name="txtEmail" placeholder="Nhập vào Email"  value="{{ old('txtEmail') }}"/>
+                                <input type='email' class="form-control" name="email" placeholder="Nhập vào Email"  value="{{ old('email') }}"/>
                             </div>
                             <div class="form-group">
                                 <label>Mật khẩu*</label>
-                                <input type='password' class="form-control" name="txtPass" placeholder="Nhập vào Mật khẩu" />
+                                <input type='password' class="form-control" name="password" placeholder="Nhập vào Mật khẩu" />
                             </div>
                             <div class="form-group">
                                 <label>Nhập lại Mật khẩu*</label>
@@ -52,44 +52,44 @@
                             <div class="form-group">
                                 <label style="margin-right: 20px">Giới tính</label>
                                 <label class="radio-inline">
-                                    <input name="rdoGender" value="0" type="radio" checked="">Nữ
+                                    <input name="gender" value="0" type="radio" checked="">Nữ
                                 </label>
                                 <label class="radio-inline">
-                                    <input name="rdoGender" value="1"  type="radio">Nam
+                                    <input name="gender" value="1"  type="radio">Nam
                                 </label>
                             </div>
                             <div class="form-group">
                                 <label>Số điện thoại*</label>
-                                <input type='number' class="form-control" name="txtPhoneNumber" placeholder="Nhập vào số điện thoại" />
+                                <input type='number' class="form-control" name="phone" placeholder="Nhập vào số điện thoại" />
                             </div>
                             <div class="form-group">
                                 <label>Ngày sinh*</label>
-                                <input type='date' class="form-control" name="txtBirthday" placeholder="Nhập vào ngày sinh" />
+                                <input type='date' class="form-control" name="birthday" placeholder="Nhập vào ngày sinh" />
                             </div>
                             <div class="form-group">
                                 <label>Địa chỉ*</label>
-                                <input type='text' class="form-control" name="txtAddress" placeholder="Nhập vào địa chỉ" />
+                                <input type='text' class="form-control" name="address" placeholder="Nhập vào địa chỉ" />
                             </div>
                             <div class="form-group">
                                 <label>Ảnh đại diện</label>
-                                <input type='file' class="form-control" name="txtAvatar" placeholder="Nhập vào ảnh đại diện" />
+                                <input type='file' class="form-control" name="avatar" placeholder="Nhập vào ảnh đại diện" />
                             </div>
                             <div class="form-group">
                                 <label style="margin-right: 20px">Trạng thái</label>
                                 <label class="radio-inline">
-                                    <input name="rdoStatus" value="1" type="radio" checked="">Dùng
+                                    <input name="status" value="1" type="radio" checked="">Dùng
                                 </label>
                                 <label class="radio-inline">
-                                    <input name="rdoStatus" value="0"  type="radio">Không
+                                    <input name="status" value="0"  type="radio">Không
                                 </label>
                             </div>
                              <div class="form-group">
                                 <label style="margin-right: 20px">Quyền hạn</label>
                                 <label class="radio-inline">
-                                    <input name="rdoQuyen" value="0" type="radio" checked="">Người dùng
+                                    <input name="level" value="0" type="radio" checked="">Người dùng
                                 </label>
                                 <label class="radio-inline">
-                                    <input name="rdoQuyen" value="1"  type="radio">Admin
+                                    <input name="level" value="1"  type="radio">Admin
                                 </label>
                             </div>
                             <button type="submit" class="btn btn-default">Thêm</button>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\StoreAddCategoryPost;
+use App\Http\Requests\StoreUpdateCategoryPost;
 use App\User;
 use DateTime;
 use Illuminate\Http\Request;
@@ -37,26 +39,13 @@ class CategoryController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAddCategoryPost $request)
     {
-        $id = DB::table('categories_product')->select('id');
-        $request->validate([
-            'txtCateName' => 'required|max:15|unique:categories,name',
-            'txtCateDescription' => 'required|max:255',
-        ], [
-            "txtCateName.required" => "Bạn chưa nhập category name",
-            "txtCateName.unique" => "Tên loại đã tồn tại",
-            "txtCateName.max" => "Tên loại không quá 15 kí tự",
-            "txtCateDescription.required" => "Bạn chưa nhập mô tả",
-            "txtCateDescription.max" => "Mô tả không quá 255 kí tự",
-        ]);
-        $cate = new Category;
-        $cate->name = $request->txtCateName;
-        $cate->description = $request->txtCateDescription;
-        $cate->created_at = new DateTime;
-        $cate->save();
+        $id = DB::table('categories')->select('id');
 
-        return redirect('category/add')->with("message", "Thêm thành công");
+        Category::create($request->all());
+
+        return redirect()->route('admin.category.create')->with("message", "Thêm thành công");
     }
 
     /**
@@ -90,26 +79,19 @@ class CategoryController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateCategoryPost $request, $id)
     {
+        $cate = new Category();
+        $result = $cate->updateCategory($id,$request->all());
+        if($result)
+        {
+            return redirect()->route('admin.category.edit',['id'=>$id])->with("message", "Sửa thành công");
 
-        $request->validate([
-            'txtCateName' => 'required|max:15|unique:categories,name',
-            'txtCateDescription' => 'required|max:255',
-        ], [
-            "txtCateName.required" => "Bạn chưa nhập category name",
-            "txtCateName.unique" => "Tên loại đã tồn tại",
-            "txtCateName.max" => "Tên loại không quá 15 kí tự",
-            "txtCateDescription.required" => "Bạn chưa nhập mô tả",
-            "txtCateDescription.max" => "Mô tả không quá 255 kí tự",
-        ]);
+        }
+        else{
+            return 'sai';
+        }
 
-        $cate = Category::find($id);
-        $cate->name = $request->txtCateName;
-        $cate->Description = $request->txtCateDescription;
-        $cate->updated_at = new DateTime;
-        $cate->save();
-        return redirect('category/update/' . $id)->with("message", "Sửa thành công");
     }
 
     /**
@@ -122,6 +104,6 @@ class CategoryController extends Controller
     {
         $cate = Category::find($id);
         $cate->delete();
-        return redirect('category/list')->with('message', 'xóa thành công');
+        return redirect()->route('admin.category.index')->with('message', 'Xóa thành công');
     }
 }

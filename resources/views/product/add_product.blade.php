@@ -9,7 +9,7 @@
                             <small>Thêm</small>
                         </h1>
                     </div>
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('admin.product.store')}}" method="POST" enctype="multipart/form-data">
                         <div class="col-lg-7" style="padding-bottom:120px">
                     @if(count($errors)>0)
                         <div class="alert alert-warning" role="alert">
@@ -27,11 +27,11 @@
                     @endif
                         <div class="form-group">
                             <label>Tên sản phẩm</label>
-                            <input class="form-control" name="txtName" placeholder="Nhập tên đầy đủ" value="{{old('txtName')}}"/>
+                            <input class="form-control" name="name" placeholder="Nhập tên đầy đủ" value="{{old('name')}}"/>
                         </div>
                         <div class="form-group">
                                 <label>Danh mục</label>
-                                <select class="form-control" name="selectCategoryId">
+                                <select class="form-control" name="category_id">
                                     @foreach($cates as $cate)
                                         <option value='{{$cate->id}}'>{{$cate->name}}</option>
                                     @endforeach
@@ -39,34 +39,34 @@
                         </div>
                         <div class="form-group">
                             <label>Mô tả</label>
-                            <textarea id="description" class="form-control" name="txtDescription" placeholder="Nhập mô tả" value="{{old('txtDescription')}}"></textarea>
+                            <textarea id="description" class="form-control" name="description" placeholder="Nhập mô tả" value="{{old('description')}}"></textarea>
                             <script type="text/javascript" language="javascript">
                                 CKEDITOR.replace('description');
                             </script>
                         </div>
                         <div class="form-group">
                             <label>Giá niêm yết</label>
-                            <input class="form-control" name="txtUnitprice" placeholder="Nhập đơn giá" value="{{old('txtUnitprice')}}"/>
+                            <input class="form-control" name="unit_price" placeholder="Nhập đơn giá" value="{{old('unit_price')}}"/>
                         </div>
                         <div class="form-group">
                             <label>Giá khuyến mãi</label>
-                            <input class="form-control" name="txtPromotionprice" placeholder="Nhập giá khuyến mãi" value="{{old('txtPromotionprice')}}"/>
+                            <input class="form-control" name="promotion_price" placeholder="Nhập giá khuyến mãi" value="{{old('promotion_price')}}"/>
                         </div>
                         <div class="form-group">
                             <label>Hình đại diện</label>
-                            <input type="file" class="form-control" name="txtAvatar" placeholder="Nhập hình đại diện" value="{{old('txtAvatar')}}"/>
+                            <input type="file" class="form-control" name="avatar" placeholder="Nhập hình đại diện" value="{{old('avatar')}}"/>
                         </div>
                         <div class="form-group">
                             <label>Số lượng</label>
-                            <input class="form-control" name="txtQuanlity" placeholder="Nhập số lượng" value="{{old('txtQuanlity')}}"/>
+                            <input class="form-control" name="quantity" placeholder="Nhập số lượng" value="{{old('quantity')}}"/>
                         </div>
                         <div class="form-group">
                             <label>Trạng thái</label>
                             <label class="radio-inline">
-                                <input name="rdoNew" value="1" checked="" type="radio">Còn hàng
+                                <input name="status" value="1" checked="" type="radio">Còn hàng
                             </label>
                             <label class="radio-inline">
-                                <input name="rdoNew" value="0" type="radio">Hết hàng
+                                <input name="status" value="0" type="radio">Hết hàng
                             </label>
                         </div>
                             <button type="submit" class="btn btn-default">Thêm</button>

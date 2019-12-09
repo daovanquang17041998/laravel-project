@@ -28,15 +28,15 @@
                                 {{session('message')}}
                             </div>
                         @endif
-                        <form action="admin/danh-muc/sua/{{$item->id}}" method="POST">
+                        <form action="{{route('admin.category.update',['id'=>$item->id])}}" method="POST">
                             <div class="form-group">
                                 <label>Tên danh mục</label>
-                                <input class="form-control" name="txtCateName" placeholder="Nhập tên danh mục"
+                                <input class="form-control" name="name" placeholder="Nhập tên danh mục"
                                        value="{!! $item->name!!}"/>
                             </div>
                             <div class="form-group">
                                 <label>Mô tả</label>
-                                <input class="form-control" name="txtCateDescription" placeholder="Nhập mô tả"
+                                <input class="form-control" name="description" placeholder="Nhập mô tả"
                                        value="{!! $item->description!!}"/>
                             </div>
                             <button type="submit" class="btn btn-default">Lưu</button>

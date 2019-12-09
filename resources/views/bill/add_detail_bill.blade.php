@@ -26,7 +26,7 @@
                     @endif
                         <div class="form-group">
                             <label>Tên sản phẩm</label><br>
-                            <select class="form-control" name="selectProductId">
+                            <select class="form-control" name="product_id">
                                 @foreach($products as $product)
                                     <option value='{{$product->id}}'>{{$product->name}}</option>
                                 @endforeach
@@ -34,13 +34,13 @@
                         </div>
                         <div class="form-group">
                             <label>Số hóa đơn</label>
-                            <select class="form-control" name="selectBillId">
+                            <select class="form-control" name="bill_id">
                                     <option value='{{$detailbill->id}}'>{{$detailbill->id}}</option>
                             </select>
                         </div>
                             <div class="form-group">
                                 <label>Số lượng</label>
-                                <input class="form-control" name="txtQuantity" placeholder="Nhập số lượng" value="{{old('txtQuantity')}}"/>
+                                <input class="form-control" name="quantity" placeholder="Nhập số lượng" value="{{old('txtQuantity')}}"/>
                             </div>
 
                             <button type="submit" class="btn btn-default">Thêm</button>

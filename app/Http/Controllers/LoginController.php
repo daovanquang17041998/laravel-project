@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAddLoginPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,15 +34,8 @@ class LoginController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAddLoginPost $request)
     {
-        $this->validate($request,[
-            'txtEmail'   => "required",
-            'txtPass'    => "required"
-        ],[
-            'txtEmail.required' => "Bạn chưa nhập Email",
-            'txtPass.required'  => "Bạn chưa nhập Mật khẩu",
-        ]);
         $email = $request->txtEmail;
         $password = $request->txtPass;
         if (Auth::attempt(['email' => $email, 'password' => $password,'level'=>1])) {

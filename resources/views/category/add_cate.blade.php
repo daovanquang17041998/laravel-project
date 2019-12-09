@@ -28,16 +28,16 @@
                                 {{session('message')}}
                             </div>
                         @endif
-                        <form action="" method="POST">
+                        <form action="{{route('admin.category.store')}}" method="POST">
                             <div class="form-group">
                                 <label>Tên danh mục</label>
-                                <input class="form-control" name="txtCateName" placeholder="Nhập tên danh mục"
-                                       value="{!! old('txtCateName')!!}"/>
+                                <input class="form-control" name="name" placeholder="Nhập tên danh mục"
+                                       value="{!! old('name')!!}"/>
                             </div>
                             <div class="form-group">
                                 <label>Mô tả</label>
-                                <input class="form-control" name="txtCateDescription" placeholder="Nhập mô tả"
-                                       value="{!! old('txtCateDescription')!!}"/>
+                                <input class="form-control" name="description" placeholder="Nhập mô tả"
+                                       value="{!! old('description')!!}"/>
                             </div>
                             <button type="submit" class="btn btn-default">Thêm</button>
                             <a href="{{route('admin.category.index')}}" class="btn btn-default">Trở về</a>

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Bill;
+use App\Http\Requests\StoreAddDetailBillPost;
+use App\Http\Requests\StoreUpdateDetailBillPost;
 use App\User;
 use App\DetailBill;
 use App\Product;
@@ -42,14 +44,9 @@ class DetailBillController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(StoreAddDetailBillPost $request,$id)
     {
-        $this->validate($request,[
-            "txtQuantity" => "required|numeric",
-        ], [
-            "txtQuantity.required" => "Bạn phải nhập số lượng",
-            "txtQuantity.numeric" => "Số lượng phải là số",
-        ]);
+
         $detail = new DetailBill;
         $detail->id_bill=$id;
         $detail->id_product = $request->selectProductId;
@@ -96,15 +93,8 @@ class DetailBillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateDetailBillPost $request, $id)
     {
-        $this->validate($request,[
-            "txtQuantity" => "required|numeric",
-        ], [
-            "txtQuantity.required" => "Bạn phải nhập số lượng",
-            "txtQuantity.numeric" => "Số lượng phải là số",
-        ]);
-
         $detail = DetailBill::find($id);
         $detail->id_product = $request->selectDetailBillId;
         $id_product = Product::find( $request->selectDetailBillId);

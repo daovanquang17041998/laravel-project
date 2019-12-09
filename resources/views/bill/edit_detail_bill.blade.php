@@ -26,7 +26,7 @@
                 @endif
                     <div class="form-group">
                         <label>Tên sản phẩm</label>
-                        <select class="form-control" name="selectDetailBillId">
+                        <select class="form-control" name="name">
                             @foreach($product as $products)
                                 <option value='{{$products->id}}'>{{$products->name}}</option>
                             @endforeach
@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group">
                         <label>Số lượng</label>
-                        <input class="form-control" name="txtQuantity" placeholder="Nhập số lượng" value="{{$bill_detail->quantity}}"/>
+                        <input class="form-control" name="quantity" placeholder="Nhập số lượng" value="{{$bill_detail->quantity}}"/>
                     </div>
                     <button type="submit" class="btn btn-default" name='ok'>Lưu lại</button>
                     <a href="{{route('admin.bill.index')}}}" class="btn btn-default">Trở về</a>

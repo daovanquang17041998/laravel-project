@@ -8,7 +8,7 @@
                         <small>Sửa</small>
                     </h1>
                 </div>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.product.update',['id'=>$product->id])}}" method="POST" enctype="multipart/form-data">
                 <div class="col-lg-7" style="padding-bottom:100px">
                 @if(count($errors)>0)
                     <div class="alert alert-warning" role="alert">
@@ -34,35 +34,35 @@
                          </div>
                         <div class="form-group">
                             <label>Tên sản phẩm</label>
-                            <input class="form-control" name="txtName" placeholder="Nhập tên đầy đủ" value="{{$product->name}}"/>
+                            <input class="form-control" name="name" placeholder="Nhập tên đầy đủ" value="{{$product->name}}"/>
                         </div>
                         <div class="form-group">
                             <label>Mô tả</label>
-                            <input class="form-control" name="txtDescription" placeholder="Nhập mô tả" value="{{$product->description}}"/>
+                            <input class="form-control" name="description" placeholder="Nhập mô tả" value="{{$product->description}}"/>
                         </div>
                     <div class="form-group">
                         <label>Giá niêm yết</label>
-                        <input class="form-control" name="txtUnitprice" placeholder="Nhập đơn giá" value="{{$product->unit_price}}"/>
+                        <input class="form-control" name="unit_price" placeholder="Nhập đơn giá" value="{{$product->unit_price}}"/>
                     </div>
                     <div class="form-group">
                         <label>Giá khuyến mãi</label>
-                        <input class="form-control" name="txtPromotionprice" placeholder="Nhập giá khuyến mãi" value="{{$product->promotion_price}}"/>
+                        <input class="form-control" name="promotion_price" placeholder="Nhập giá khuyến mãi" value="{{$product->promotion_price}}"/>
                     </div>
                     <div class="form-group">
                         <label>Hình đại diện</label>
-                        <input type="file" class="form-control" name="txtAvatar" placeholder="Nhập hình đại diện" value="{{$product->image}}"/>
+                        <input type="file" class="form-control" name="avatar" placeholder="Nhập hình đại diện" value="{{$product->image}}"/>
                     </div>
                     <div class="form-group">
                         <label>Số lượng</label>
-                        <input class="form-control" name="txtQuanlity" placeholder="Nhập số lượng" value="{{$product->quantity}}"/>
+                        <input class="form-control" name="quantity" placeholder="Nhập số lượng" value="{{$product->quantity}}"/>
                     </div>
                     <div class="form-group">
                         <label>Trạng thái</label>
                          <label class="radio-inline">
-                              <input name="rdoNew" value="1" @if($product->status == 1) checked @endif type="radio">Còn hàng
+                              <input name="status" value="1" @if($product->status == 1) checked @endif type="radio">Còn hàng
                          </label>
                          <label class="radio-inline">
-                               <input name="rdoNew" value="0" type="radio" @if($product->status == 0) checked @endif>Hết hàng
+                               <input name="status" value="0" type="radio" @if($product->status == 0) checked @endif>Hết hàng
                          </label>
                     </div>
                     <button type="submit" class="btn btn-default" name='ok'>Lưu lại</button>

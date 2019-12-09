@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\StoreAddProductPost;
+use App\Http\Requests\StoreUpdateProductPost;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -37,29 +39,19 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAddProductPost $request)
     {
-
-        $this->validate($request, [
-            "txtName" => "required|max:15|unique:products,name",
-            "txtDescription" => "max:250",
-        ], [
-            "txtName.unique" => "Tên sản phẩm bị trùng",
-            "txtName.max" => "Tên có độ dài không quá 15 kí tự",
-            "txtName.required" => "Bạn phải nhập tên sản phẩm",
-            "txtDescription.max" => "Mô tả có độ dài không quá 250 kí tự",
-        ]);
-        $product = new Product;
-        $product->id_category = $request->selectCategoryId;
-        $product->name = $request->txtName;
-        $product->description = $request->txtDescription;
-        $product->unit_price = $request->txtUnitprice;
-        $product->promotion_price = $request->txtPromotionprice;
-        $product->image = $request->txtAvatar;
-        $product->quantity = $request->txtQuanlity;
-        $product->status = $request->rdoNew;
-        $product->save();
-        return redirect("product/add")->with("message","Thêm sản phẩm thành công");
+        $data = $request->except('image');
+        $get_image = $request->file('image');
+        if($get_image){
+            $get_name_image = $get_image->getClientOriginalName();
+            $get_image->move('uploads/products',$get_name_image);
+            $data['image'] = $get_name_image;
+            return redirect()->route('admin.product.create')->with('message','Thêm thành công');
+        }
+        else
+            $data['image'] = "";
+        return redirect()->route('admin.product.create')->with("message","Thêm sản phẩm thành công");
     }
 
     /**
@@ -93,31 +85,19 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUpdateProductPost $request, $id)
     {
-        $this->validate($request, [
-            "txtName" => "required|max:15",
-            "txtDescription" => "required|max:250",
-        ], [
-            "txtName.max" => "Tên có độ dài không quá 15 kí tự",
-            "txtName.required" => "Bạn phải nhập tên sản phẩm",
-            "txtDescription.required" => "Bạn phải nhập mô tả",
-            "txtDescription.max" => "Mô tả có độ dài không quá 250 kí tự",
-        ]);
-        if(isset($_POST['ok']))
+        $product = new Product();
+        $result = $product->updateProduct($id,$request->all());
+        if($result)
         {
-            $product = Product::find($id);
-            $product->id_category = $request->selectCategoryId;
-            $product->name = $request->txtName;
-            $product->description = $request->txtDescription;
-            $product->unit_price = $request->txtUnitprice;
-            $product->promotion_price = $request->txtPromotionprice;
-            $product->image = $request->txtAvatar;
-            $product->quantity = $request->txtQuanlity;
-            $product->status = $request->rdoNew;
-            $product->save();
-            return redirect('product/update/'.$id)->with('message','Sửa thành công');
+            return redirect()->route('admin.product.edit',['id'=>$id])->with('message','Sửa thành công');
+
         }
+        else{
+            return 'sai';
+        }
+
     }
 
     /**
@@ -128,8 +108,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
         $product->delete();
-        return redirect('product/list')->with('message','xóa thành công');
+        return redirect()->route('admin.product.index')->with('message','xóa thành công');
     }
 }

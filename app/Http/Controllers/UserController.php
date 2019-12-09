@@ -6,7 +6,7 @@ use App\Category;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use App\Http\Requests\StoreAddUserPost;
 class UserController extends Controller
 {
     /**
@@ -36,22 +36,19 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAddUserPost $request)
     {
-        $id = DB::table('categories_product')->select('id');
-        $request->validate([
-            'txtCateName' => 'required|max:15|unique:categories_product,name',
-        ],[
-            "txtCateName.required" => "Bạn chưa nhập category name",
-            "txtCateName.unique" => "Tên loại đã tồn tại",
-            "txtCateName.max" => "Tên loại không quá 15 kí tự",
-        ]);
-        $cate             = new Category();
-        $cate->name       = $request->txtCateName;
-        $cate->created_at = new DateTime;
-        $cate->save();
-
-        return redirect('category/add')->with("message","Thêm thành công");
+        $data = $request->except('avatar');
+        $get_image = $request->file('avatar');
+        if($get_image){
+            $get_name_image = $get_image->getClientOriginalName();
+            $get_image->move('uploads/users',$get_name_image);
+            $data['avatar'] = $get_name_image;
+            return redirect()->route('admin.user.create')->with('message','Thêm thành công');
+        }
+        else
+            $data['avatar'] = "";
+        return redirect()->route('admin.user.create')->with('message','Thêm thành công');
     }
 
     /**
@@ -103,7 +100,7 @@ class UserController extends Controller
         $user->level      = $request->rdoQuyen;
         $user->save();
 
-        return redirect('user/update/'.$id)->with('message','Sửa thành công');
+        return redirect()->route('admin.user.edit',['id'=>$id])->with('message','Sửa thành công');
     }
 
     /**

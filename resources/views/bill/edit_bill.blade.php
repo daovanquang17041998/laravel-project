@@ -8,7 +8,7 @@
                         <small>Sửa</small>
                     </h1>
                 </div>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.bill.update',['id'=>$bill->id])}}}" method="POST" enctype="multipart/form-data">
                 <div class="col-lg-7" style="padding-bottom:100px">
                 @if(count($errors)>0)
                     <div class="alert alert-warning" role="alert">
@@ -26,7 +26,7 @@
                 @endif
                          <div class="form-group">
                                 <label>Nhân viên</label>
-                                <select class="form-control" name="selectUserId">
+                                <select class="form-control" name="user_id">
                                     @foreach($users as $user)
                                         @if($user->level==1)
                                         <option value='{{$user->id}}' @if($user->id == $bill->id_user) selected @endif >{{$user->fullname}}</option>
@@ -37,10 +37,10 @@
                     <div class="form-group">
                         <label>Phương thức thanh toán</label>
                         <label class="radio-inline">
-                            <input name="txtPayment" value="1" {{$bill->payment == 1 ? 'checked': ''}} type="radio">Trực tiếp
+                            <input name="payment" value="1" {{$bill->payment == 1 ? 'checked': ''}} type="radio">Trực tiếp
                         </label>
                         <label class="radio-inline">
-                            <input name="txtPayment" value="0" {{$bill->payment == 0 ? 'checked': ''}}type="radio">Chuyển khoản
+                            <input name="payment" value="0" {{$bill->payment == 0 ? 'checked': ''}}type="radio">Chuyển khoản
                         </label>
                     </div>
                     <button type="submit" class="btn btn-default" name='ok'>Lưu lại</button>
